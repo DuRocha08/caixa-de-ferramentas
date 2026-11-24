@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Caixa de Ferramentas</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <div class="pagina">
+    <header class="cabecalho">
+      <div>
+        <h1>Caixa de Ferramentas</h1>
+        <p>Utilitários rápidos feitos em JS</p>
+      </div>
+      <button id="botaoTema" onclick="mudarTema()">Modo Escuro</button>
+    </header>
+
+    <div class="menu-abas">
+      <button id="aba1" class="btn-aba selecionado" onclick="abrirAba('telaConta', 'aba1')">Dividir Conta</button>
+      <button id="aba2" class="btn-aba" onclick="abrirAba('telaSenha', 'aba2')">Gerar Senha</button>
+      <button id="aba3" class="btn-aba" onclick="abrirAba('telaTemp', 'aba3')">Temperatura</button>
+    </div>
+
+    <main class="caixa-principal">
+      <div id="telaConta" class="conteudo-aba">
+        <h2>Divisor de Conta</h2>
+        
+        <label for="valorConta">Valor total da conta (R$):</label>
+        <input type="text" id="valorConta" placeholder="Ex: 120.50">
+
+        <label for="qtdPessoas">Quantidade de pessoas:</label>
+        <input type="text" id="qtdPessoas" placeholder="Ex: 4">
+
+        <label for="porcentagemGorjeta">Gorjeta (%):</label>
+        <input type="text" id="porcentagemGorjeta" value="10">
+
+        <button class="btn-acao" onclick="calcularConta()">Calcular</button>
+        <p id="erroConta" class="aviso-erro"></p>
+        <div id="resConta" class="resultado"></div>
+      </div>
+
+      <div id="telaSenha" class="conteudo-aba" style="display: none;">
+        <h2>Gerador de Senhas</h2>
+
+        <label for="tamSenha">Tamanho da senha (6 a 30):</label>
+        <input type="text" id="tamSenha" value="12">
+
+        <div class="grupo-check">
+          <label><input type="checkbox" id="checkNumeros" checked> Com números</label>
+          <label><input type="checkbox" id="checkSimbolos" checked> Com símbolos</label>
+        </div>
+
+        <button class="btn-acao" onclick="gerarSenha()">Criar Senha</button>
+        <p id="erroSenha" class="aviso-erro"></p>
+        <div id="resSenha" class="resultado"></div>
+      </div>
+
+      <div id="telaTemp" class="conteudo-aba" style="display: none;">
+        <h2>Conversor de Temperatura</h2>
+
+        <label for="valorCelsius">Graus Celsius (°C):</label>
+        <input type="text" id="valorCelsius" placeholder="Ex: 25">
+
+        <button class="btn-acao" onclick="converterTemp()">Converter</button>
+        <p id="erroTemp" class="aviso-erro"></p>
+        <div id="resTemp" class="resultado"></div>
+      </div>
+    </main>
+
+    <section class="area-historico">
+      <div class="topo-historico">
+        <h3>Últimos usos salvos</h3>
+        <button onclick="limparHistorico()">Apagar tudo</button>
+      </div>
+      <ul id="listaHistorico"></ul>
+    </section>
+
+    <footer class="rodape">
+      Feito por Eduardo Rocha • ADS
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
